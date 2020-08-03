@@ -1,5 +1,5 @@
-#pragma once
 #include <math.h>
+#pragma once
 class Neuron
 {
 private:
@@ -13,7 +13,7 @@ public:
 	double getValue()							{ return this->value; }
 	double getActivatedVal()					{ return this->activatedVal; };
 	double getDerivedVal()						{ return this->derivedVal; }
-	void setValue(double value)					{ this->value = value; };
+	void setValue(double value);
 	void setActivatedVal(double activatedVal)   { this->activatedVal = activatedVal; }
 	void setDerivedVal(double derivedVal)		{ this->derivedVal = derivedVal; }
 public:

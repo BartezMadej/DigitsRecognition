@@ -8,7 +8,13 @@ Neuron::Neuron(double value)
 }
 
 Neuron::~Neuron()
+{}
+
+void Neuron::setValue(double value)
 {
+	this->value = value;
+	activateNeuron();
+	deriveNeuron();
 }
 
 void Neuron::activateNeuron()
