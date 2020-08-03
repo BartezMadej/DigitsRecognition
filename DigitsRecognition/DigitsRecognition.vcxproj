@@ -152,9 +152,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DigitsRecognition.cpp" />
+    <ClCompile Include="Layer.cpp" />
+    <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="Neuron.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Layer.h" />
+    <ClInclude Include="Matrix.h" />
     <ClInclude Include="Neuron.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
