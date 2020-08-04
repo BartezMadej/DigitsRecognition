@@ -9,11 +9,11 @@
 #include "NeuralNetwork.h"
 int main()
 {
-	std::vector<unsigned> topology = { 3,2,2 };
+	std::vector<unsigned> topology = { 3,3,2 };
 	NeuralNetwork* pNetwork = new NeuralNetwork(topology);
 	//pNetwork->printWeightMatrices();
 	//pNetwork->printBiases();
-	//pNetwork->printLayersMatrixes();
+	//pNetwork->printLayers();
 	delete pNetwork;
 	return 0;
 }

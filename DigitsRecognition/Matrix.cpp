@@ -26,6 +26,14 @@ void Matrix::initializeMatrix()
 	}
 }
 
+void Matrix::zerosMatrix()
+{
+	for (unsigned i = 0; i < nRows; ++i)
+		for (unsigned j = 0; j < nCols; ++j)
+			this->weights[i][j] = 0.0;
+	
+}
+
 Matrix* Matrix::transposeMatrix()
 {
 	Matrix* pTrans = new Matrix(this->nCols,this->nRows);
@@ -35,7 +43,22 @@ Matrix* Matrix::transposeMatrix()
 	return pTrans;
 }
 
-void Matrix::printMatrix()
+Matrix& Matrix::operator*(const Matrix& mat)
+{
+	Matrix* pResult = new Matrix(this->getNumRows(), mat.getNumCols());
+	pResult->zerosMatrix();
+	for (unsigned i = 0; i < nRows; ++i)
+	{
+		for (unsigned j = 0; j < mat.getNumCols(); ++j)
+		{
+			for (unsigned z = 0; z < mat.getNumRows(); ++z)
+				pResult->setValue(i, j, pResult->getValue(i, j) + (this->getValue(i, z) * mat.getValue(z, j)));
+		}
+	}
+	return *pResult;
+}
+
+void Matrix::printMatrix() const
 {
 	for (unsigned i = 0; i < nRows; ++i)
 	{

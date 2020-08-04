@@ -22,8 +22,8 @@ private:
 public:
 	void setInputValues(std::vector<double> input);
 public:
-	void printBiases();
-	void printWeightMatrices();
-	void printLayersMatrixes();
+	void printLayers() const;
+	void printBiases() const;
+	void printWeightMatrices() const;
 
 };
