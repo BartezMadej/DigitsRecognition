@@ -10,10 +10,19 @@
 int main()
 {
 	std::vector<unsigned> topology = { 3,3,2 };
+	std::vector<double> input = { 0.3,0.3,0.2 };
 	NeuralNetwork* pNetwork = new NeuralNetwork(topology);
-	//pNetwork->printWeightMatrices();
-	//pNetwork->printBiases();
-	//pNetwork->printLayers();
+	pNetwork->setInputValues(input);
+	pNetwork->printWeightMatrices();
+	pNetwork->printBiases();
+	std::cout << "============================" << std::endl;
+	pNetwork->printLayers();
+	std::cout << "============================" << std::endl;
+	pNetwork->feedForward();
+	pNetwork->printLayers();
+	std::cout << "============================" << std::endl;
+
+
 	delete pNetwork;
 	return 0;
 }

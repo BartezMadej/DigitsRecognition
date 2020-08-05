@@ -20,6 +20,11 @@ void Layer::setInput(const std::vector<double>& input)
 		this->neurons.at(i)->setValue(input.at(i));
 }
 
+void Layer::setNeuronValue(unsigned index, double val)
+{
+	this->neurons.at(index)->setValue(val);
+}
+
 Matrix* Layer::matrixifyNeurons()
 {
 	Matrix* pVals = new Matrix(1, (unsigned)neurons.size());

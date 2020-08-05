@@ -40,10 +40,28 @@ void NeuralNetwork::createWeightMatrices()
 		this->weightMatrices.push_back(std::make_shared<Matrix>(topology.at(i), topology.at((long long)i+1)));
 }
 
-void NeuralNetwork::setInputValues(std::vector<double> input)
+void NeuralNetwork::setInputValues(std::vector<double>& input)
 {
 	this->inputValues = input;
 	this->layers.at(0)->setInput(input);
+}
+
+void NeuralNetwork::feedForward()
+{
+
+	Matrix* pTemp = NULL;
+	for (unsigned i = 0; i < this->topology.size()-1; ++i)
+	{
+		if(!i)
+			pTemp = layers.at(0)->matrixifyNeurons();
+		else
+			pTemp = this->layers.at(i)->matrixifyActivatedVal();
+		
+		Matrix result = *pTemp * *(this->weightMatrices.at(i));
+		for (unsigned index = 0; index < result.getNumCols(); ++index)
+			this->layers.at((long long)i + 1)->setNeuronValue(index, result.getValue(0, index) + this->biases.at(i).at(index));
+		delete pTemp;
+	}
 }
 
 void NeuralNetwork::printBiases() const
