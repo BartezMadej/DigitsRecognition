@@ -27,3 +27,19 @@ Matrix* Layer::matrixifyNeurons()
 		pVals->setValue(0, i, neurons.at(i)->getValue());
 	return pVals;
 }
+
+Matrix* Layer::matrixifyActivatedVal()
+{
+	Matrix* pResult = new Matrix(1, this->neurons.size());
+	for (unsigned i = 0; i < this->neurons.size(); ++i)
+		pResult->setValue(0,i,neurons.at(i)->getActivatedVal());
+	return pResult;
+}
+
+Matrix* Layer::matrixifyDerivedVal()
+{
+	Matrix* pResult = new Matrix(1, this->neurons.size());
+	for (unsigned i = 0; i < this->neurons.size(); ++i)
+		pResult->setValue(0, i, neurons.at(0)->getDerivedVal());
+	return pResult;
+}

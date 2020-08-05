@@ -16,5 +16,7 @@ public:
 public:
 	void setInput(const std::vector<double>& input);
 	Matrix* matrixifyNeurons();
+	Matrix* matrixifyActivatedVal();
+	Matrix* matrixifyDerivedVal();
 
 };

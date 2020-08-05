@@ -11,12 +11,14 @@ public:
 	Matrix(unsigned nRows, unsigned nCols);
 	~Matrix();
 public:
-	unsigned getNumRows()										{ return nRows; }
-	unsigned getNumCols()										{ return nCols; }
-	double getValue(unsigned nRow, unsigned nCol)				{ return weights.at(nRow).at(nCol); }
+	unsigned getNumRows() const									{ return nRows; }
+	unsigned getNumCols() const									{ return nCols; }
+	double getValue(unsigned nRow, unsigned nCol) const			{ return weights.at(nRow).at(nCol); }
 	void setValue(unsigned nRow, unsigned nCol, double value)	{ weights.at(nRow).at(nCol) = value; }
 public:
+	void printMatrix() const;
+	void zerosMatrix();
 	void initializeMatrix();
 	Matrix* transposeMatrix();
-	void printMatrix();
+	Matrix& operator*(const Matrix& mat);
 };

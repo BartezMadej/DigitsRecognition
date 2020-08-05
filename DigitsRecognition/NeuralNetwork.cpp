@@ -11,8 +11,7 @@ NeuralNetwork::NeuralNetwork(std::vector<unsigned> topology)
 }
 
 NeuralNetwork::~NeuralNetwork()
-{
-}
+{}
 
 void NeuralNetwork::initBiases()
 {
@@ -47,7 +46,7 @@ void NeuralNetwork::setInputValues(std::vector<double> input)
 	this->layers.at(0)->setInput(input);
 }
 
-void NeuralNetwork::printBiases()
+void NeuralNetwork::printBiases() const
 {
 	for (unsigned i = 0; i < biases.size(); ++i)
 	{
@@ -57,7 +56,7 @@ void NeuralNetwork::printBiases()
 	}
 }
 
-void NeuralNetwork::printWeightMatrices()
+void NeuralNetwork::printWeightMatrices() const
 {
 	for (unsigned i = 0; i < weightMatrices.size(); ++i)
 	{
@@ -66,7 +65,7 @@ void NeuralNetwork::printWeightMatrices()
 	}
 }
 
-void NeuralNetwork::printLayersMatrixes()
+void NeuralNetwork::printLayers() const
 {
 	Matrix* pM = NULL;
 	for (unsigned i = 0; i < layers.size(); ++i)
