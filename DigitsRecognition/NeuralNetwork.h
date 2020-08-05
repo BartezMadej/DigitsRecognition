@@ -1,8 +1,8 @@
+#pragma once
 #include <vector>
 #include <memory>
 #include "Layer.h"
 #include "Matrix.h"
-#pragma once
 class NeuralNetwork
 {
 private:
@@ -20,10 +20,11 @@ private:
 	void createLayers();
 	void createWeightMatrices();
 public:
-	void setInputValues(std::vector<double> input);
-public:
 	void printLayers() const;
 	void printBiases() const;
 	void printWeightMatrices() const;
+public:
+	void setInputValues(std::vector<double>& input);
+	void feedForward();
 
 };

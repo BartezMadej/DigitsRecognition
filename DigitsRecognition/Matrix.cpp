@@ -1,4 +1,5 @@
 #include "Matrix.h"
+#include <iostream>
 #include <random>
 Matrix::Matrix(unsigned nRows, unsigned nCols)
 {
@@ -31,7 +32,6 @@ void Matrix::zerosMatrix()
 	for (unsigned i = 0; i < nRows; ++i)
 		for (unsigned j = 0; j < nCols; ++j)
 			this->weights[i][j] = 0.0;
-	
 }
 
 Matrix* Matrix::transposeMatrix()
@@ -43,19 +43,21 @@ Matrix* Matrix::transposeMatrix()
 	return pTrans;
 }
 
-Matrix& Matrix::operator*(const Matrix& mat)
+Matrix Matrix::operator*(const Matrix& mat)
 {
-	Matrix* pResult = new Matrix(this->getNumRows(), mat.getNumCols());
-	pResult->zerosMatrix();
+	if (this->nCols != mat.getNumRows())
+		throw std::logic_error("Matrix operator*");
+	Matrix pResult = Matrix(this->getNumRows(), mat.getNumCols());
+	pResult.zerosMatrix();
 	for (unsigned i = 0; i < nRows; ++i)
 	{
 		for (unsigned j = 0; j < mat.getNumCols(); ++j)
 		{
 			for (unsigned z = 0; z < mat.getNumRows(); ++z)
-				pResult->setValue(i, j, pResult->getValue(i, j) + (this->getValue(i, z) * mat.getValue(z, j)));
+				pResult.setValue(i, j, pResult.getValue(i, j) + (this->getValue(i, z) * mat.getValue(z, j)));
 		}
 	}
-	return *pResult;
+	return pResult;
 }
 
 void Matrix::printMatrix() const

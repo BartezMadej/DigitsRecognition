@@ -1,6 +1,6 @@
+#pragma once
 #include <vector>
 #include <iostream>
-#pragma once
 class Matrix
 {
 private:
@@ -20,5 +20,5 @@ public:
 	void zerosMatrix();
 	void initializeMatrix();
 	Matrix* transposeMatrix();
-	Matrix& operator*(const Matrix& mat);
+	Matrix operator*(const Matrix& mat);
 };

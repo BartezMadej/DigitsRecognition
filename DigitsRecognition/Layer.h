@@ -1,10 +1,10 @@
+#pragma once
 #include "Neuron.h"
 #include "Matrix.h"
 #include <vector>
 #include <iostream>
 #include <memory>
 
-#pragma once
 class Layer 
 {
 private:
@@ -15,6 +15,7 @@ public:
 	~Layer();
 public:
 	void setInput(const std::vector<double>& input);
+	void setNeuronValue(unsigned index, double val);
 	Matrix* matrixifyNeurons();
 	Matrix* matrixifyActivatedVal();
 	Matrix* matrixifyDerivedVal();
