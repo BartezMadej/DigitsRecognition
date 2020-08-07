@@ -9,20 +9,19 @@
 #include "NeuralNetwork.h"
 int main()
 {
-	std::vector<unsigned> topology = { 3,3,2 };
-	std::vector<double> input = { 0.3,0.3,0.2 };
+	std::vector<unsigned> topology = {2,3,2 };
+	std::vector<double> input = { 0.3,0.2 };
 	NeuralNetwork* pNetwork = new NeuralNetwork(topology);
 	pNetwork->setInputValues(input);
 	pNetwork->printWeightMatrices();
-	pNetwork->printBiases();
-	std::cout << "============================" << std::endl;
-	pNetwork->printLayers();
-	std::cout << "============================" << std::endl;
-	pNetwork->feedForward();
-	pNetwork->printLayers();
-	std::cout << "============================" << std::endl;
 
 
-	delete pNetwork;
+
+
+
+
+	std::vector<std::shared_ptr<Matrix>> deltaNablaB;
+	std::vector<std::shared_ptr<Matrix>> deltaNablaW;
+	pNetwork->backPropagation(deltaNablaB, deltaNablaW, input, 1);	delete pNetwork;
 	return 0;
 }

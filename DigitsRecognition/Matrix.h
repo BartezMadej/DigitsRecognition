@@ -8,7 +8,7 @@ private:
 	unsigned nCols;
 	std::vector<std::vector<double>> weights;
 public:
-	Matrix(unsigned nRows, unsigned nCols);
+	Matrix(unsigned nRows, unsigned nCols, bool initRandom);
 	~Matrix();
 public:
 	unsigned getNumRows() const									{ return nRows; }
@@ -19,6 +19,7 @@ public:
 	void printMatrix() const;
 	void zerosMatrix();
 	void initializeMatrix();
-	Matrix* transposeMatrix();
-	Matrix operator*(const Matrix& mat);
+	std::shared_ptr<Matrix> transposeMatrix();
+	std::shared_ptr<Matrix> operator*(const std::shared_ptr<Matrix> mat);
+	std::shared_ptr<Matrix> operator+(const std::shared_ptr<Matrix> add);
 };
