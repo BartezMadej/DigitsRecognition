@@ -16,8 +16,8 @@ public:
 public:
 	void setInput(const std::vector<double>& input);
 	void setNeuronValue(unsigned index, double val);
-	Matrix* matrixifyNeurons();
-	Matrix* matrixifyActivatedVal();
-	Matrix* matrixifyDerivedVal();
+	std::shared_ptr<Matrix> matrixifyNeurons();
+	std::shared_ptr<Matrix> matrixifyActivatedVal();
+	std::shared_ptr<Matrix> matrixifyDerivedVal();
 
 };

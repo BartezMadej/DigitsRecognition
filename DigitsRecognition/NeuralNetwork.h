@@ -7,24 +7,26 @@ class NeuralNetwork
 {
 private:
 	unsigned layersNumber;
-	std::vector<double>						inputValues;
 	std::vector<unsigned>					topology;
-	std::vector<std::vector<double>>		biases;
-	std::vector<std::shared_ptr<Layer>>		layers;
+	std::shared_ptr<Matrix>					inputValues;
+	std::vector<std::shared_ptr<Matrix>>	biases;
 	std::vector<std::shared_ptr<Matrix>>	weightMatrices;
 public:
 	NeuralNetwork(std::vector<unsigned> topology);
 	~NeuralNetwork();
 private:
 	void initBiases();
-	void createLayers();
 	void createWeightMatrices();
 public:
-	void printLayers() const;
+	void printInput() const;
 	void printBiases() const;
 	void printWeightMatrices() const;
 public:
 	void setInputValues(std::vector<double>& input);
-	void feedForward();
-
+	std::shared_ptr<Matrix> feedForward();
+	void backPropagation(std::vector<std::shared_ptr<Matrix>>& deltaNablaB,
+		std::vector<std::shared_ptr<Matrix>>& deltaNablaW, std::vector<double>& x, int y);
+	void sigmoid(std::shared_ptr<Matrix>& z);
+	std::shared_ptr<Matrix> sigmoidPrime(std::shared_ptr<Matrix>& z);
+	std::shared_ptr<Matrix> costDerivative(std::shared_ptr<Matrix>& outputActivations, int y);
 };
