@@ -7,8 +7,8 @@ class NeuralNetwork
 {
 private:
 	unsigned layersNumber;
-	std::vector<unsigned>					topology;
-	std::shared_ptr<Matrix>					inputValues;
+	std::vector<unsigned>			topology;
+	std::shared_ptr<Matrix>			inputValues;
 	std::vector<std::shared_ptr<Matrix>>	biases;
 	std::vector<std::shared_ptr<Matrix>>	weightMatrices;
 public:
@@ -23,10 +23,9 @@ public:
 	void printWeightMatrices() const;
 public:
 	void setInputValues(std::vector<double>& input);
-	std::shared_ptr<Matrix> feedForward();
-	void backPropagation(std::vector<std::shared_ptr<Matrix>>& deltaNablaB,
-		std::vector<std::shared_ptr<Matrix>>& deltaNablaW, std::vector<double>& x, int y);
-	void sigmoid(std::shared_ptr<Matrix>& z);
-	std::shared_ptr<Matrix> sigmoidPrime(std::shared_ptr<Matrix>& z);
-	std::shared_ptr<Matrix> costDerivative(std::shared_ptr<Matrix>& outputActivations, int y);
+	Matrix feedForward();
+	void backPropagation(std::vector<Matrix>& deltaB, std::vector<Matrix>& deltaW, std::vector<double>& x, int y);
+	void sigmoid(Matrix& z);
+	Matrix sigmoidPrime(const Matrix& z);
+	Matrix costDerivative(const Matrix& outputActivations, int y);
 };

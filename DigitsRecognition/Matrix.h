@@ -11,15 +11,15 @@ public:
 	Matrix(unsigned nRows, unsigned nCols, bool initRandom);
 	~Matrix();
 public:
-	unsigned getNumRows() const									{ return nRows; }
-	unsigned getNumCols() const									{ return nCols; }
-	double getValue(unsigned nRow, unsigned nCol) const			{ return weights.at(nRow).at(nCol); }
+	unsigned getNumRows() const					{ return nRows; }
+	unsigned getNumCols() const					{ return nCols; }
+	double getValue(unsigned nRow, unsigned nCol) const		{ return weights.at(nRow).at(nCol); }
 	void setValue(unsigned nRow, unsigned nCol, double value)	{ weights.at(nRow).at(nCol) = value; }
 public:
 	void printMatrix() const;
 	void zerosMatrix();
 	void initializeMatrix();
-	std::shared_ptr<Matrix> transposeMatrix();
-	std::shared_ptr<Matrix> operator*(const std::shared_ptr<Matrix> mat);
-	std::shared_ptr<Matrix> operator+(const std::shared_ptr<Matrix> add);
+	Matrix transposeMatrix();
+	Matrix operator*(const Matrix mat);
+	Matrix operator+(const Matrix add);
 };
