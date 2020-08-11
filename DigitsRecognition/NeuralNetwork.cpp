@@ -53,12 +53,12 @@ void NeuralNetwork::printWeightMatrices() const
 	}
 }
 
-void NeuralNetwork::setInputValues(std::vector<double>& input)
+void NeuralNetwork::setInputValues(std::vector<int>& input)
 {
 	inputValues = std::make_shared<Matrix>((unsigned)input.size(), 1, false);
 	for (unsigned i = 0; i < input.size(); ++i)
 	{
-		inputValues->setValue(i, 0, input.at(i));
+		inputValues->setValue(i, 0, input.at(i)/255);
 	}
 }
 Matrix NeuralNetwork::feedForward()
@@ -73,7 +73,7 @@ Matrix NeuralNetwork::feedForward()
 }
 
 
-void NeuralNetwork::backPropagation(std::vector<Matrix>& deltaB, std::vector<Matrix>& deltaW, std::vector<double>& x, int y)
+void NeuralNetwork::backPropagation(std::vector<Matrix>& deltaB, std::vector<Matrix>& deltaW, std::vector<int>& x, int y)
 {
 	this->setInputValues(x);
 	Matrix activation = *(this->inputValues);
