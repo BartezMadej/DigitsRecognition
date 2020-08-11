@@ -22,10 +22,11 @@ public:
 	void printBiases() const;
 	void printWeightMatrices() const;
 public:
-	void setInputValues(std::vector<double>& input);
+	void setInputValues(std::vector<int>& input);
 	Matrix feedForward();
-	void backPropagation(std::vector<Matrix>& deltaB, std::vector<Matrix>& deltaW, std::vector<double>& x, int y);
+	void backPropagation(std::vector<Matrix>& deltaB, std::vector<Matrix>& deltaW, std::vector<int>& x, int y);
 	void sigmoid(Matrix& z);
 	Matrix sigmoidPrime(const Matrix& z);
 	Matrix costDerivative(const Matrix& outputActivations, int y);
+	void updateMiniBatch();
 };

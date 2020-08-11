@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DataReader.cpp" />
     <ClCompile Include="DigitsRecognition.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="Matrix.cpp" />
@@ -158,6 +159,7 @@
     <ClCompile Include="Neuron.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DataReader.h" />
     <ClInclude Include="Layer.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="NeuralNetwork.h" />
