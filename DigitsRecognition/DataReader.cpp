@@ -38,15 +38,15 @@ void DataReader::readData(std::vector<std::vector<int>>& data, const char* pPath
 	file.read((char*)&nCols, sizeof(nCols));
 	nCols = reverseInt(nCols);
 	data.resize(imagesNumber, std::vector<int>(IMAGE_DIM));
-	for (int i = 0; i < imagesNumber - 1; ++i)
+	for (int  i = 0; i < imagesNumber - 1; ++i)
 	{
-		for (int j = 0; j < nRows; ++j)
+		for (int  j = 0; j < nRows; ++j)
 		{
-			for (int z = 0; z < nCols; ++z)
+			for (int  z = 0; z < nCols; ++z)
 			{
 				unsigned char temp = 0;
 				file.read((char*)&temp, sizeof(temp));
-				data[i][(nRows * j) + z] = (double)temp;
+				data[i][(nRows *j) + z] = static_cast<int>(temp);
 			}
 		}
 	}

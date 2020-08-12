@@ -22,4 +22,6 @@ public:
 	Matrix transposeMatrix();
 	Matrix operator*(const Matrix mat);
 	Matrix operator+(const Matrix add);
+	Matrix operator*(double val);
+	Matrix operator-(const Matrix del);
 };
