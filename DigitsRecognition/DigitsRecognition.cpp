@@ -12,20 +12,10 @@
 #include "DataReader.h"
 int main()
 {
-	/*std::vector<unsigned> topology = {3,2,1 };
-	std::vector<double> input = { 233, 33, 233 };
+	std::vector<unsigned> topology = { 784, 30, 10 };
 	NeuralNetwork* pNetwork = new NeuralNetwork(topology);
-	pNetwork->setInputValues(input);
-	pNetwork->printWeightMatrices();
-	std::cout << "-=-=-=-=-=-=-=-=-=-=-=\n";
-
-
-	std::vector<Matrix> deltaNablaB;
-	std::vector<Matrix> deltaNablaW;
-	pNetwork->backPropagation(deltaNablaB, deltaNablaW, input, 2);
-	delete pNetwork;*/
-	DataReader reader;
-	//reader.readTrainingLabels();
-	reader.readTrainingData();
+	pNetwork->readData();
+	pNetwork->SGD();
+	delete pNetwork;
 	return 0;
 }

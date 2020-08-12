@@ -9,7 +9,6 @@ Matrix::Matrix(unsigned nRows, unsigned nCols, bool initRandom)
 		initializeMatrix();
 	else
 		zerosMatrix();
-
 }
 
 Matrix::~Matrix()
@@ -75,7 +74,23 @@ Matrix Matrix::operator+(const Matrix add)
 			res.setValue(i, j, this->getValue(i,j) + add.getValue(i, j));
 	return res;
 }
+Matrix Matrix::operator*(double val)
+{
+	Matrix ret(getNumRows(), getNumCols(), false);
+	for (unsigned i = 0; i < getNumRows(); ++i)
+		for (unsigned j = 0; j < getNumCols(); ++j)
+			ret.setValue(i, j, this->getValue(i, j) * val);
+	return ret;
+}
 
+Matrix Matrix::operator-(const Matrix del)
+{
+	 Matrix ret(del.getNumRows(), del.getNumCols(), false);
+	 for (unsigned i = 0; i < del.getNumRows(); ++i)
+		 for (unsigned j = 0; j < del.getNumCols(); ++j)
+			 ret.setValue(i, j, this->getValue(i, j) - del.getValue(i, j));
+	 return ret;
+}
 
 void Matrix::printMatrix() const
 {

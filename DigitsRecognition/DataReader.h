@@ -19,4 +19,6 @@ private:
 public:
 	void readTestingData();
 	void readTrainingData();
+/*FRIEND ZONE*/
+	friend class NeuralNetwork;
 };
